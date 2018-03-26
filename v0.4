@@ -1,0 +1,191 @@
+#Tic Tac Toe --version 0.4
+#by XMMR12
+#DATE: 26-08-2017
+#Modified date: 01/09/2017
+import androidhelper
+import os
+import random
+def clear():
+    os.system("clear")
+
+droid = androidhelper.Android()
+exit=None
+xscore=0
+oscore=0
+counter=random.randint(0,1) #the start point counter instead line 36
+number_of_played_games=0 #new counter instead of the one in line 36
+while (True):
+    one="1";two="2";three="3"
+    four="4";five="5";six="6"
+    seven="7";eight="8";nine="9"
+    def game():
+        print """\t\t ___________
+    \t\t/           \ 
+    \t\t| {} | {} | {} |
+    \t\t|---+---+---|
+    \t\t| {} | {} | {} |
+    \t\t|---+---+---|
+    \t\t| {} | {} | {} |
+    \t\t\___________/\n\n
+    """.format(one,two,three,four,five,six,seven,eight,nine)
+    clear()
+    print """    Wins       \ Tic tac Toe /     Wins
+    X:{}\t        \___________/      O:{}""".format(xscore,oscore)
+    game()
+    #counter=0 #after i made random() up it is not a counter anymore look line 17
+    while (True) :
+        if (counter%2==0):
+            x=raw_input("X 's turn:")
+            if (x==one):
+                one="X"
+            elif (x==two):
+                two="X"
+            elif (x==three):
+                three="X"
+            elif (x==four):
+                four="X"
+            elif (x==five):
+                five="X"
+            elif (x==six):
+                six="X"
+            elif (x==seven):
+                seven="X"
+            elif (x==eight):
+                eight="X"
+            elif (x==nine):
+                nine="X"
+            elif (x>=10 or x<=0):
+                counter-=1
+        
+        elif (counter%2==1):
+            o=raw_input("O 's turn:")
+            if (o==one):
+                one="O"
+            elif (o==two):
+                two="O"
+            elif (o==three):
+                three="O"
+            elif (o==four):
+                four="O"
+            elif (o==five):
+                five="O"
+            elif (o==six):
+                six="O"
+            elif (o==seven):
+                seven="O"
+            elif (o==eight):
+                eight="O"
+            elif (o==nine):
+                nine="O"
+            elif (o>=10 or o<=0):
+                counter-=1 #to not pass the turn if a wrong letter is written
+        clear()
+        game()
+        
+        #X Posibilities:
+        if (one=="X" and two=="X" and three=="X"):
+            droid.makeToast("X is the winner")
+            xscore+=1
+            break
+        elif (four=="X" and five=="X" and six=="X"):
+            droid.makeToast("X is the winner")
+            xscore+=1
+            break
+        elif (seven=="X" and eight=="X" and nine=="X"):
+            droid.makeToast("X is the winner")
+            xscore+=1
+            break
+        elif (one=="X" and four=="X" and seven=="X"):
+            droid.makeToast("X is the winner")
+            xscore+=1
+            break
+        elif (two=="X" and five=="X" and eight=="X"):
+            droid.makeToast("X is the winner")
+            xscore+=1
+            break
+        elif (three=="X" and six=="X" and nine=="X"):
+            droid.makeToast("X is the winner")
+            xscore+=1
+            break
+        elif (one=="X" and five=="X" and nine=="X"):
+            droid.makeToast("X is the winner")
+            xscore+=1
+            break
+        elif (three=="X" and five=="X" and seven=="X"):
+            droid.makeToast("X is the winner")
+            xscore+=1
+            break
+    
+        #O possibilities:
+        if (one=="O" and two=="O" and three=="O"):
+            droid.makeToast("O is the winner")
+            oscore+=1
+            break
+        elif (four=="O" and five=="O" and six=="O"):
+            droid.makeToast("O is the winner")
+            oscore+=1
+            break
+        elif (seven=="O" and eight=="O" and nine=="O"):
+            droid.makeToast("O is the winner")
+            oscore+=1
+            break
+        elif (one=="O" and four=="O" and seven=="O"):
+            droid.makeToast("O is the winner")
+            oscore+=1
+            break
+        elif (two=="O" and five=="O" and eight=="O"):
+            droid.makeToast("O is the winner")
+            oscore+=1
+            break
+        elif (three=="O" and six=="O" and nine=="O"):
+            droid.makeToast("O is the winner")
+            oscore+=1
+            break
+        elif (one=="O" and five=="O" and nine=="O"):
+            droid.makeToast("O is the winner")
+            oscore+=1
+            break        
+        elif (three=="O" and five=="O" and seven=="O"):
+            droid.makeToast("O is the winner")
+            oscore+=1
+            break
+        
+        counter+=1    
+        if ( ((one=="X")or(one=="O"))and
+        	((two=="X")or(two=="O"))and
+        	((three=="X")or(three=="O"))and
+        	((four=="X")or(four=="O"))and
+        	((five=="X")or(five=="O"))and
+        	((six=="X")or(six=="O"))and
+        	((seven=="X")or(seven=="O"))and
+        	((eight=="X")or(eight=="O"))and
+        	((nine=="X")or(nine=="O")) ):
+            print"""
+            \n\nNo one wins except I\n\n
+            """
+            break
+    while(True):
+        number_of_played_games+=1 #refered to line 17
+        print "\t   Number of games played:{}".format(number_of_played_games)
+        exit=raw_input("Do you want to play again ? [yes-y/no-n]\n")
+        clear()
+        lowerexit=exit.lower()
+        if (lowerexit=="no" or lowerexit=="n" or lowerexit=="yes" or lowerexit=="y"):
+            break
+            counter=random.randint(0,1)
+    if (lowerexit=="no" or lowerexit=="n"):
+        clear()
+        print """
+     _______                      |[
+    | _____/    ___    ___    ___ ||
+    ||  ____   /   \  /   \  /   \||
+    ||____\ \ |  O  ||  O  ||     ||
+    |_______|  \___/  \___/  \___/\\\\_
+     ____
+    [    )              ____
+    [  O  )  \ \   //  / __ \\
+    [    /    \ \ //  [ |__\_\\
+    [  O  )    /  /   \ \_____
+    [____)  \_/  /     \_____/
+        """
+        break
